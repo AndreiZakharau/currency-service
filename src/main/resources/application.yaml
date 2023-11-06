@@ -3,3 +3,5 @@ server:
   servlet:
     context-path: /api/v1.0
 
+cbr:
+  url: "https://cbr.ru/scripts/XML_daily.asp"
