@@ -7,6 +7,7 @@ import com.zakharau.financial_transactions.service.request.CbrRequest;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,17 +22,19 @@ public class CurrencyRateService {
   private final CurrencyRateParser currencyRateParser;
   private final CbrConfig cbrConfig;
 
-  public CurrencyRate getCurrencyRate(String currency, LocalDate date) {
+  public List<CurrencyRate> getCurrencyRate(List<String> currency, LocalDate date) {
+
+    if (date == null) {
+      date = LocalDate.now();
+    }
 
     String urlWithParams = String.format("%s?date_req=%s", cbrConfig.getUrl(),
         DATE_FORMATTER.format(date));
     String ratesAsXml = cbrRequest.getRatesAsXml(urlWithParams);
     List<CurrencyRate>rates = currencyRateParser.parse(ratesAsXml);
 
-    return rates.stream().filter(rate -> currency.equals(rate.getCharCode()))
-        .findFirst()
-        //TODO refactor Exception
-        .orElseThrow(() -> new RuntimeException(
-            "Currency Rate not found. Currency:" + currency + ", date:" + date));
+    return rates.stream()
+        .filter(rate -> currency.contains(rate.getCharCode()))
+        .collect(Collectors.toList());
   }
 }

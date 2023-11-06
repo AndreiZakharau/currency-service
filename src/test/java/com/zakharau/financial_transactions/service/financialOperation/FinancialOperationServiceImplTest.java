@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -62,8 +61,10 @@ class FinancialOperationServiceImplTest {
   void getAll_ShouldReturnListOfFinancialOperationModels_WhenOperationsExist() {
 
     List<FinancialOperation> operationList = new ArrayList<>();
-    operationList.add(new FinancialOperation(1L,"transfer to card", (BigDecimal.valueOf(3300)),LocalDateTime.now()));
-    operationList.add(new FinancialOperation(2L,"transfer to check", (BigDecimal.valueOf(3300)),LocalDateTime.now()));
+    operationList.add(new FinancialOperation(1L, "transfer to card", (BigDecimal.valueOf(3300)),
+        LocalDateTime.now()));
+    operationList.add(new FinancialOperation(2L, "transfer to check", (BigDecimal.valueOf(3300)),
+        LocalDateTime.now()));
 
     when(repo.findAll()).thenReturn(operationList);
     when(mapper.fromFinancialOperation(operationList.get(0))).thenReturn(
@@ -84,9 +85,12 @@ class FinancialOperationServiceImplTest {
 
     long id = 1;
     LocalDateTime activityDate = LocalDateTime.now();
-    FinancialOperation financialOperation = new FinancialOperation(id, "transfer to card", (BigDecimal.valueOf(3300)),activityDate );
-    FinancialOperationModel model = new FinancialOperationModel(id, "transfer to check", (BigDecimal.valueOf(3300)),activityDate);
-    FinancialOperationModel expectedModel = new FinancialOperationModel(id, "transfer to check", (BigDecimal.valueOf(3300)),activityDate);
+    FinancialOperation financialOperation = new FinancialOperation(id, "transfer to card",
+        (BigDecimal.valueOf(3300)), activityDate);
+    FinancialOperationModel model = new FinancialOperationModel(id, "transfer to check",
+        (BigDecimal.valueOf(3300)), activityDate);
+    FinancialOperationModel expectedModel = new FinancialOperationModel(id, "transfer to check",
+        (BigDecimal.valueOf(3300)), activityDate);
 
     when(mapper.fromFinancialOperationModel(model)).thenReturn(financialOperation);
     when(service.getFinancialOperationById(model.getId())).thenReturn(

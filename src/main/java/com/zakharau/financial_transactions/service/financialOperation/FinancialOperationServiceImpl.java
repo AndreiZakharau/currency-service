@@ -6,6 +6,7 @@ import com.zakharau.financial_transactions.model.FinancialOperationModel;
 import com.zakharau.financial_transactions.repository.FinancialOperationRepo;
 import com.zakharau.financial_transactions.util.FinancialOperationMapper;
 import jakarta.persistence.EntityNotFoundException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,7 @@ public class FinancialOperationServiceImpl implements FinancialOperationService 
   public FinancialOperationModel save(CreateFinancialOperationModel model) {
 
     FinancialOperation financialOperation = mapper.fromCreateFinancialOperationModel(model);
+    financialOperation.setActivityDate(LocalDateTime.now());
     return mapper.fromFinancialOperation(repo.save(financialOperation));
   }
 
