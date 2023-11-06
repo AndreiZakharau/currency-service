@@ -1,7 +1,7 @@
 package com.zakharau.financial_transactions.controller;
 
 import com.zakharau.financial_transactions.model.CurrencyRate;
-import com.zakharau.financial_transactions.service.CurrencyRateService;
+import com.zakharau.financial_transactions.service.currencyRate.CurrencyRateService;
 import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;

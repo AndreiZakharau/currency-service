@@ -1,4 +1,4 @@
-package com.zakharau.financial_transactions.service;
+package com.zakharau.financial_transactions.service.currencyRate;
 
 import com.zakharau.financial_transactions.config.CbrConfig;
 import com.zakharau.financial_transactions.model.CurrencyRate;
@@ -8,11 +8,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
-@Slf4j
 @RequiredArgsConstructor
 public class CurrencyRateService {
 

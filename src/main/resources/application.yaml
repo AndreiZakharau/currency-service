@@ -1,3 +1,10 @@
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    name: soft-club
+    generate-unique-name: false
 server:
   port: 8082
   servlet:
