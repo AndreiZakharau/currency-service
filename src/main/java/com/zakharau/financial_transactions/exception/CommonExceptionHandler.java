@@ -81,15 +81,6 @@ public class CommonExceptionHandler {
         exception.getMessage());
   }
 
-//  @ExceptionHandler(BadParameterException.class)
-//  @ResponseStatus(BAD_REQUEST)
-//  public ExceptionInformation handleBadRequestException(BadParameterException exception) {
-//    return new ExceptionInformation(
-//        BadRequest.class.getSimpleName(),
-//        BAD_REQUEST,
-//        exception.getMessage());
-//  }
-
   @ExceptionHandler({MethodArgumentNotValidException.class, BindException.class})
   @ResponseStatus(BAD_REQUEST)
   public ExceptionInformation handleMethodArgumentNotValidException(BindException exception) {

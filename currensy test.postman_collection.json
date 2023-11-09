@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "94edfaba-4558-4f5f-8535-4a8de454ece5",
+		"name": "currensy test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19687640"
+	},
+	"item": [
+		{
+			"name": "get currency rate",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "currencies",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "25-03-2023",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/v1.0/currencyRate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1.0",
+						"currencyRate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/v1.0/operation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1.0",
+						"operation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save operation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\":\"неревод на счёт\",\r\n    \"sum\":76865.787\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/v1.0/operation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1.0",
+						"operation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete operation",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/v1.0/operation/aff20f4f-057b-46c0-bcda-06b374dfcb83",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1.0",
+						"operation",
+						"aff20f4f-057b-46c0-bcda-06b374dfcb83"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update operation",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": \"ba4feeed-9cc6-4385-a6de-b40c4ff3580a\",\r\n        \"description\": \"неревод на rfhne\",\r\n        \"sum\": 2340.00\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/v1.0/operation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1.0",
+						"operation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get operation by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/v1.0/operation/7b8f5d92-58cb-44d2-984f-1292a4c41a87",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1.0",
+						"operation",
+						"7b8f5d92-58cb-44d2-984f-1292a4c41a87"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all operations for the period in currency",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/v1.0/operation/currency?currency=EUR&startDate=01-10-2023&finishDate=10-10-2023",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1.0",
+						"operation",
+						"currency"
+					],
+					"query": [
+						{
+							"key": "currency",
+							"value": "EUR"
+						},
+						{
+							"key": "startDate",
+							"value": "01-10-2023"
+						},
+						{
+							"key": "finishDate",
+							"value": "10-10-2023"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

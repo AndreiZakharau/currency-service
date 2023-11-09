@@ -44,12 +44,14 @@ public class FinancialOperationController implements FinancialOperationApi {
 
   @Override
   public Optional<FinancialOperation> getOperationById(UUID id) {
+
     return service.getFinancialOperationById(id);
   }
 
   @Override
   public List<FinancialOperationInCurrency> getAllOperationByCurrency(String currency,
       LocalDate startDate, LocalDate finishDate) {
-    return service.operationInCurrencyList(currency,startDate,finishDate);
+
+    return service.operationInCurrencyList(currency, startDate, finishDate);
   }
 }
