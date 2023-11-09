@@ -21,7 +21,6 @@ public class CbrRequestImpl implements CbrRequest {
       HttpResponse<String> response =
           client.send(request, HttpResponse.BodyHandlers.ofString());
       return response.body();
-      //TODO refactor exceptions
     } catch (Exception e) {
       if (e instanceof InterruptedException) {
         Thread.currentThread().interrupt();

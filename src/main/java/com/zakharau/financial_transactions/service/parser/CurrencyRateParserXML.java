@@ -1,5 +1,6 @@
 package com.zakharau.financial_transactions.service.parser;
 
+import com.zakharau.financial_transactions.exception.CurrencyParserException;
 import com.zakharau.financial_transactions.model.CurrencyRate;
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -7,7 +8,6 @@ import java.util.List;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import org.hibernate.query.sqm.ParsingException;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -51,9 +51,8 @@ public class CurrencyRateParserXML implements CurrencyRateParser {
           }
         }
       }
-      //TODO refactor exception
     } catch (Exception e) {
-      throw new ParsingException(e.getMessage());
+      throw new CurrencyParserException("When processing data, an exception faced");
     }
     return rates;
   }
