@@ -16,7 +16,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 @Service
-public class CurrencyRateParserXML implements CurrencyRateParser {
+public class CurrencyRateParserXml implements CurrencyRateParser {
 
   @Override
   public List<CurrencyRate> parse(String ratesAsString) {

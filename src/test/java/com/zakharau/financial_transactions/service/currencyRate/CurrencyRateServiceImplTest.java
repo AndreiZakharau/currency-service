@@ -43,15 +43,16 @@ class CurrencyRateServiceImplTest {
     String urlWithParams = "http://example.com?date_req=06/11/2023";
     String ratesAsXml = "<rates>...</rates>";
     List<CurrencyRate> expectedRates = Arrays.asList(
-        new CurrencyRate("840", "USD","1","Доллар США","76,4479"),
-        new CurrencyRate("978", "EUR", "1","Евро","82,3923")
+        new CurrencyRate("840", "USD", "1", "Доллар США", "76,4479"),
+        new CurrencyRate("978", "EUR", "1", "Евро", "82,3923")
     );
 
     when(cbrConfig.getUrl()).thenReturn("http://example.com");
     when(cbrRequest.getRatesAsXml(urlWithParams)).thenReturn(ratesAsXml);
     when(currencyRateParser.parse(ratesAsXml)).thenReturn(expectedRates);
 
-    List<CurrencyRate> actualRates = currencyRateServiceImpl.getCurrencyRate(Arrays.asList("USD", "EUR"), date);
+    List<CurrencyRate> actualRates = currencyRateServiceImpl.getCurrencyRate(
+        Arrays.asList("USD", "EUR"), date);
 
     assertEquals(expectedRates, actualRates);
     verify(cbrRequest).getRatesAsXml(urlWithParams);
@@ -65,15 +66,16 @@ class CurrencyRateServiceImplTest {
     String urlWithParams = "http://example.com?date_req=" + DATE_FORMATTER.format(currentDate);
     String ratesAsXml = "<rates>...</rates>";
     List<CurrencyRate> expectedRates = Arrays.asList(
-        new CurrencyRate("840", "USD","1","Доллар США","76,4479"),
-        new CurrencyRate("978", "EUR", "1","Евро","82,3923")
+        new CurrencyRate("840", "USD", "1", "Доллар США", "76,4479"),
+        new CurrencyRate("978", "EUR", "1", "Евро", "82,3923")
     );
 
     when(cbrConfig.getUrl()).thenReturn("http://example.com");
     when(cbrRequest.getRatesAsXml(urlWithParams)).thenReturn(ratesAsXml);
     when(currencyRateParser.parse(ratesAsXml)).thenReturn(expectedRates);
 
-    List<CurrencyRate> actualRates = currencyRateServiceImpl.getCurrencyRate(Arrays.asList("USD", "EUR"), null);
+    List<CurrencyRate> actualRates = currencyRateServiceImpl.getCurrencyRate(
+        Arrays.asList("USD", "EUR"), null);
 
     assertEquals(expectedRates, actualRates);
     verify(cbrRequest).getRatesAsXml(urlWithParams);
