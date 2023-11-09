@@ -12,3 +12,6 @@ server:
 
 cbr:
   url: "https://cbr.ru/scripts/XML_daily.asp"
+
+cron:
+  profile: "* * 11,16 * * *"

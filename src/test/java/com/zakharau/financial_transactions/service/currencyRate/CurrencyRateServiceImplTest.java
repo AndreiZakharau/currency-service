@@ -14,16 +14,14 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class CurrencyRateServiceTest {
+class CurrencyRateServiceImplTest {
 
   private static final String DATE_FORMAT = "dd/MM/yyyy";
   private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_FORMAT);
@@ -35,7 +33,7 @@ class CurrencyRateServiceTest {
   @Mock
   private CbrConfig cbrConfig;
   @InjectMocks
-  private CurrencyRateService currencyRateService;
+  private CurrencyRateServiceImpl currencyRateServiceImpl;
 
 
   @Test
@@ -53,7 +51,7 @@ class CurrencyRateServiceTest {
     when(cbrRequest.getRatesAsXml(urlWithParams)).thenReturn(ratesAsXml);
     when(currencyRateParser.parse(ratesAsXml)).thenReturn(expectedRates);
 
-    List<CurrencyRate> actualRates = currencyRateService.getCurrencyRate(Arrays.asList("USD", "EUR"), date);
+    List<CurrencyRate> actualRates = currencyRateServiceImpl.getCurrencyRate(Arrays.asList("USD", "EUR"), date);
 
     assertEquals(expectedRates, actualRates);
     verify(cbrRequest).getRatesAsXml(urlWithParams);
@@ -75,7 +73,7 @@ class CurrencyRateServiceTest {
     when(cbrRequest.getRatesAsXml(urlWithParams)).thenReturn(ratesAsXml);
     when(currencyRateParser.parse(ratesAsXml)).thenReturn(expectedRates);
 
-    List<CurrencyRate> actualRates = currencyRateService.getCurrencyRate(Arrays.asList("USD", "EUR"), null);
+    List<CurrencyRate> actualRates = currencyRateServiceImpl.getCurrencyRate(Arrays.asList("USD", "EUR"), null);
 
     assertEquals(expectedRates, actualRates);
     verify(cbrRequest).getRatesAsXml(urlWithParams);

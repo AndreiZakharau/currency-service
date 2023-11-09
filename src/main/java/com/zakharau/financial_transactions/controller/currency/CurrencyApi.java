@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @RequestMapping("/currencyRate")
 public interface CurrencyApi {
 
-  @GetMapping("/currencies")
+  @GetMapping()
   @ResponseStatus(HttpStatus.OK)
   List<CurrencyRate> getCurrencyRate(
       @RequestParam(value = "currencies", defaultValue = "USD, EUR",
